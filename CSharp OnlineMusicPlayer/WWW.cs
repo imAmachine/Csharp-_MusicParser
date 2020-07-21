@@ -19,12 +19,9 @@ namespace CSharp_OnlineMusicPlayer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
             if (response.StatusCode == HttpStatusCode.OK)
-            {
                 using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-                {
                     return sr.ReadToEnd();
-                }
-            }
+
             return string.Empty;
         }
 
