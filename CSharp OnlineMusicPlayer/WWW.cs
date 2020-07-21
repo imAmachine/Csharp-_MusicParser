@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace CSharp_OnlineMusicPlayer
 {
@@ -18,15 +19,23 @@ namespace CSharp_OnlineMusicPlayer
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
             if (response.StatusCode == HttpStatusCode.OK)
+            {
                 using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
                     return sr.ReadToEnd();
-
+                }
+            }
             return string.Empty;
         }
 
-        //public static List<MusicElement> GetMusicList(string webPage)
-        //{
+        public static void GetMusicListFromWebPage(string webPage, string rgxPattern)
+        {
+            string pattern = rgxPattern;
+            Regex rgx = new Regex(pattern);
 
-        //}
+            string page = GetPage(webPage);
+
+            List<Match> links = (List<Match>)rgx.Matches(page).OfType<Match>().Where(x => x.Groups.Count > 0);
+        }
     }
 }
