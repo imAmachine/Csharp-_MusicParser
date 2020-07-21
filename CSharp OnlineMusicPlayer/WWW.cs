@@ -28,14 +28,14 @@ namespace CSharp_OnlineMusicPlayer
             return string.Empty;
         }
 
-        public static void GetMusicListFromWebPage(string webPage, string rgxPattern)
+        public static List<Match> GetMusicListFromWebPage(string webPage, string rgxPattern)
         {
             string pattern = rgxPattern;
             Regex rgx = new Regex(pattern);
 
             string page = GetPage(webPage);
 
-            List<Match> links = (List<Match>)rgx.Matches(page).OfType<Match>().Where(x => x.Groups.Count > 0);
+            return rgx.Matches(page).OfType<Match>().Where(x => x.Groups.Count > 0).ToList();
         }
     }
 }

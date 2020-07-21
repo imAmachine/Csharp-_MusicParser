@@ -28,25 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.player1 = new CSharp_OnlineMusicPlayer.Player();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_Search
             // 
-            this.button1.Location = new System.Drawing.Point(496, 90);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Search.Location = new System.Drawing.Point(496, 90);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 23);
+            this.btn_Search.TabIndex = 0;
+            this.btn_Search.Text = "Поиск";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // player1
+            // 
+            this.player1.Location = new System.Drawing.Point(12, 170);
+            this.player1.Name = "player1";
+            this.player1.Size = new System.Drawing.Size(402, 268);
+            this.player1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.player1);
+            this.Controls.Add(this.btn_Search);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +64,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Search;
+        private Player player1;
     }
 }
 
