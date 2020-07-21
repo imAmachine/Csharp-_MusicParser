@@ -13,6 +13,8 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Form1 : Form
     {
+        private string startPageUrl = @"https://muzofond.fm/";
+        private string rgxPattern = @"<ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
         public Form1()
         {
             InitializeComponent();
@@ -20,9 +22,12 @@ namespace CSharp_OnlineMusicPlayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string rgxPattern = @"<ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
-            List<Match> urls = WWW.GetMusicListFromWebPage(@"https://muzofond.fm/search/ram%20%D0%BF%D0%BE%D1%82", rgxPattern);
-            player1.url = urls[0].Groups[1].Value;
+            player1.URLS = WWW.GetMusicListFromWebPage($@"https://muzofond.fm/search/{textBox1.Text.Trim()}", rgxPattern).Select(x => x.Groups[1].Value).ToList();
+        }
+
+        private void player1_Load(object sender, EventArgs e)
+        {
+            player1.URLS = WWW.GetMusicListFromWebPage(@"https://muzofond.fm/", rgxPattern).Select(x => x.Groups[1].Value).ToList();
         }
     }
 }

@@ -15,9 +15,24 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Player : UserControl
     {
-        public string url = string.Empty;
-        WindowsMediaPlayer wmp;
-        int volume = 3;
+        private string url = string.Empty;
+        private WindowsMediaPlayer wmp;
+        private int volume = 3;
+
+        private List<string> listURLS = new List<string>();
+
+        public List<string> URLS
+        {
+            get
+            {
+                return listURLS;
+            }
+            set
+            {
+                listURLS = value;
+                listbox.DataSource = new BindingSource(listURLS, null);
+            }
+        }
         
         public Player()
         {
@@ -26,7 +41,7 @@ namespace CSharp_OnlineMusicPlayer
 
         private void btn_Play_Click(object sender, EventArgs e)
         {
-            wmp.URL = url;
+            wmp.URL = listbox.SelectedItem.ToString();
             wmp.controls.play();
         }
 
