@@ -45,10 +45,20 @@ namespace CSharp_OnlineMusicPlayer
             wmp.controls.play();
         }
 
+        private void btn_Next_Click(object sender, EventArgs e)
+        {
+            listbox.SelectedIndex = (listbox.SelectedIndex + ((Button)sender == btn_Next ? 1 : -1) + listbox.Items.Count) % listbox.Items.Count;
+        }
+
         private void Player_Load(object sender, EventArgs e)
         {
             wmp = new WindowsMediaPlayer();
-            wmp.settings.volume = volume;
+            tb_Volume.Value = volume;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            wmp.settings.volume = tb_Volume.Value;
         }
     }
 }

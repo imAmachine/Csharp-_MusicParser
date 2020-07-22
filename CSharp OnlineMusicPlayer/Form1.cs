@@ -16,6 +16,7 @@ namespace CSharp_OnlineMusicPlayer
     {
         private string startPageUrl = @"https://muzofond.fm/";
         private string rgxPattern = @"<ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
+
         public Form1()
         {
             InitializeComponent();
