@@ -26,16 +26,21 @@ namespace CSharp_OnlineMusicPlayer
             set
             {
                 URLS = value;
-                foreach (var i in URLS)
-                {
-                    MusicPanel mp = new MusicPanel()
-                    {
-                        url = i.URL,
-                        trackName = i.trackName
-                    };
-                    panel2.Controls.Add(mp);
-                }
+                LoadMusicPanels(URLS);
             }
+        }
+
+        private async void LoadMusicPanels(List<MusicElement> URLS)
+        {
+            await Task.Run(() =>
+            {
+                List<MusicPanel> panels = new List<MusicPanel>();
+                foreach (var i in URLS)
+                    panels.Add(new MusicPanel() { url = i.URL, trackName = i.trackName });
+                if (panel2.InvokeRequired)
+                    panel2.Invoke((Action)(() =>  { panel2.Controls.AddRange(panels.OfType<Control>().ToArray()); } ));
+            });
+                
         }
 
         public Player()
