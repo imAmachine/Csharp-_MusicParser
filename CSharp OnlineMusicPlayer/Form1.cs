@@ -24,14 +24,14 @@ namespace CSharp_OnlineMusicPlayer
         private async void SetMusicList(string pageURL)
         {
             btn_Search.Enabled = false;
-            List<string> musicList = new List<string>();
+            List<MusicElement> musicList = new List<MusicElement>();
 
             await Task.Run(() =>
             {
-                musicList = WWW.GetMusicListFromWebPage(pageURL, rgxPattern).Select(x => x.Groups[1].Value).ToList(); ;
+                musicList = WWW.GetMusicListFromWebPage(pageURL, rgxPattern);
             });
 
-            player1.URLS = musicList;
+            player1.Music = musicList;
             btn_Search.Enabled = true;
             
         }

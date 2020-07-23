@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn_Search = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.player1 = new CSharp_OnlineMusicPlayer.Player();
@@ -57,17 +56,16 @@
             this.player1.Location = new System.Drawing.Point(12, 46);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(311, 392);
-            this.player1.TabIndex = 1;
-            this.player1.URLS = ((System.Collections.Generic.List<string>)(resources.GetObject("player1.URLS")));
+            this.player1.TabIndex = 3;
             this.player1.Load += new System.EventHandler(this.player1_Load);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(335, 450);
             this.Controls.Add(this.player1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btn_Search);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -79,8 +77,8 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Search;
-        private Player player1;
         private System.Windows.Forms.TextBox textBox1;
+        private Player player1;
     }
 }
 

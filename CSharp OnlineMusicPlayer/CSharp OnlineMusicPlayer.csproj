@@ -54,6 +54,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MusicElement.cs" />
+    <Compile Include="MusicPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MusicPanel.Designer.cs">
+      <DependentUpon>MusicPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Player.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="WWW.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MusicPanel.resx">
+      <DependentUpon>MusicPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Player.resx">
       <DependentUpon>Player.cs</DependentUpon>

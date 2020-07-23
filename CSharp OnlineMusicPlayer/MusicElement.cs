@@ -8,21 +8,16 @@ namespace CSharp_OnlineMusicPlayer
 {
     public class MusicElement
     {
-        public string URL { get; set; }
-        public string MusicName { get; set; }
-        public DateTime MusicDuration { get; set; }
+        public string URL = string.Empty;
+        public string trackName = string.Empty;
+        public DateTime duration = DateTime.Now;
 
-        /// <summary>
-        /// Данный класс позволяет хранить всю необходимую информацию о музыкальном треке
-        /// </summary>
-        /// <param name="url">Прямая ссылка на музыкальный трек</param>
-        /// <param name="musicName">Название музыкального трека</param>
-        /// <param name="musicDuration">Продолжительность музыкального трека</param>
-        public MusicElement(string url, string musicName, DateTime musicDuration)
+        public MusicElement() { }
+        public MusicElement(string url, string trackName, DateTime duration)
         {
             URL = url;
-            MusicName = musicName;
-            MusicDuration = musicDuration;
+            this.trackName = trackName;
+            this.duration = duration;
         }
     }
 }
