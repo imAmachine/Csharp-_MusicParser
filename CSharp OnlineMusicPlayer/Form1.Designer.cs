@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_Search = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_Search = new System.Windows.Forms.TextBox();
             this.player1 = new CSharp_OnlineMusicPlayer.Player();
             this.SuspendLayout();
             // 
@@ -45,11 +45,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(12, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 31);
-            this.textBox1.TabIndex = 2;
+            this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_Search.Location = new System.Drawing.Point(12, 9);
+            this.tb_Search.Name = "textBox1";
+            this.tb_Search.Size = new System.Drawing.Size(230, 31);
+            this.tb_Search.TabIndex = 2;
             // 
             // player1
             // 
@@ -65,7 +65,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 450);
             this.Controls.Add(this.player1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_Search);
             this.Controls.Add(this.btn_Search);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -77,7 +77,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Search;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_Search;
         private Player player1;
     }
 }

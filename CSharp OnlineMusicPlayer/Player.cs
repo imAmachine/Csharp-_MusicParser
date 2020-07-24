@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using WMPLib;
+using System.Runtime.CompilerServices;
 
 namespace CSharp_OnlineMusicPlayer
 {
@@ -18,6 +19,9 @@ namespace CSharp_OnlineMusicPlayer
         private string url = string.Empty;
         private WindowsMediaPlayer wmp;
         private int volume = 3;
+
+        private int index = 0;
+        private MusicPanel curPanel = null; 
         
         private List<MusicElement> URLS = new List<MusicElement>();
 
@@ -32,15 +36,27 @@ namespace CSharp_OnlineMusicPlayer
 
         private async void LoadMusicPanels(List<MusicElement> URLS)
         {
-            await Task.Run(() =>
+            panel2.Controls.Clear();
+            panel2.SuspendLayout();
+
+            foreach (var i in URLS.Reverse<MusicElement>()) 
             {
-                List<MusicPanel> panels = new List<MusicPanel>();
-                foreach (var i in URLS)
-                    panels.Add(new MusicPanel() { url = i.URL, trackName = i.trackName });
-                if (panel2.InvokeRequired)
-                    panel2.Invoke((Action)(() =>  { panel2.Controls.AddRange(panels.OfType<Control>().ToArray()); } ));
-            });
+                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName };
+                panel.Click += Panel_Click;
                 
+                panel2.Controls.Add(panel);
+
+                await Task.Delay(1);
+            }
+
+            panel2.ResumeLayout();
+        }
+
+        private void Panel_Click(object sender, EventArgs e)
+        {
+            curPanel = (MusicPanel)sender;
+            index = panel2.Controls.IndexOf(curPanel);
+            curPanel.Focus();
         }
 
         public Player()
@@ -50,31 +66,48 @@ namespace CSharp_OnlineMusicPlayer
 
         private void btn_Play_Click(object sender, EventArgs e)
         {
-            //wmp.URL = listbox.SelectedItem.ToString();
+            wmp.URL = curPanel.URL;
             wmp.controls.play();
         }
 
         private void btn_Next_Click(object sender, EventArgs e)
         {
-            //listbox.SelectedIndex = (listbox.SelectedIndex + ((Button)sender == btn_Next ? 1 : -1) + listbox.Items.Count) % listbox.Items.Count;
+            index = (index + ((Button)sender == btn_Next ? -1 : 1) + panel2.Controls.Count) % panel2.Controls.Count;
+            curPanel = (MusicPanel)panel2.Controls[index];
+            curPanel.Focus();
         }
 
         private void Player_Load(object sender, EventArgs e)
         {
             wmp = new WindowsMediaPlayer();
-            wmp.PositionChange += Wmp_PositionChange;
 
             tb_Volume.Value = volume;
+            Timer tmr = new Timer()
+            {
+                Interval = 1000
+            };
+            tmr.Tick += Tmr_Tick;
+            tmr.Start();
         }
 
-        private void Wmp_PositionChange(double oldPosition, double newPosition)
+        private void Tmr_Tick(object sender, EventArgs e)
         {
-            progressBar1.Value++;
+            if (wmp.currentMedia != null && wmp.currentMedia.duration > 0)
+            {
+                int percent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
+                label4.Text = $"{ wmp.controls.currentPositionString } / { wmp.currentMedia.durationString }";
+                progressBar1.Value = percent;
+            }
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             wmp.settings.volume = tb_Volume.Value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(wmp.controls.currentPositionString);
         }
     }
 }

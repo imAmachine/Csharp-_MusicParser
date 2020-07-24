@@ -33,12 +33,11 @@ namespace CSharp_OnlineMusicPlayer
 
             player1.Music = musicList;
             btn_Search.Enabled = true;
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SetMusicList($@"https://muzofond.fm/search/{textBox1.Text.Trim()}");
+            SetMusicList($@"https://muzofond.fm/search/{tb_Search.Text.Trim()}");
         }
 
         private void player1_Load(object sender, EventArgs e)

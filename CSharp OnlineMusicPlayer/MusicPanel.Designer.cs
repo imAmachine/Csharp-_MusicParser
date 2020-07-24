@@ -71,6 +71,8 @@
             this.Name = "MusicPanel";
             this.Size = new System.Drawing.Size(429, 83);
             this.Load += new System.EventHandler(this.MusicPanel_Load);
+            this.Enter += new System.EventHandler(this.MusicPanel_Enter);
+            this.Leave += new System.EventHandler(this.MusicPanel_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

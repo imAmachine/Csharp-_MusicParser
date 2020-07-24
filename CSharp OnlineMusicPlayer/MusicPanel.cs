@@ -12,7 +12,8 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class MusicPanel : UserControl
     {
-        public string url
+        private string url = string.Empty;
+        public string URL
         {
             get
             {
@@ -20,6 +21,7 @@ namespace CSharp_OnlineMusicPlayer
             }
             set
             {
+                url = value;
                 label2.Text = value;
             }
         }
@@ -45,6 +47,16 @@ namespace CSharp_OnlineMusicPlayer
         {
             Dock = DockStyle.Top;
             Height = 65;
+        }
+
+        private void MusicPanel_Enter(object sender, EventArgs e)
+        {
+            BackColor = Color.Green;
+        }
+
+        private void MusicPanel_Leave(object sender, EventArgs e)
+        {
+            BackColor = SystemColors.Control;
         }
     }
 }
