@@ -43,11 +43,11 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // tb_Search
             // 
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_Search.Location = new System.Drawing.Point(12, 9);
-            this.tb_Search.Name = "textBox1";
+            this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(230, 31);
             this.tb_Search.TabIndex = 2;
             // 

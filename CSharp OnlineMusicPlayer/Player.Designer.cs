@@ -34,22 +34,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tb_Volume = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tb_Volume)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Prev
             // 
             this.btn_Prev.Location = new System.Drawing.Point(3, 3);
             this.btn_Prev.Name = "btn_Prev";
-            this.btn_Prev.Size = new System.Drawing.Size(37, 31);
+            this.btn_Prev.Size = new System.Drawing.Size(41, 31);
             this.btn_Prev.TabIndex = 1;
             this.btn_Prev.Text = "Prev";
             this.btn_Prev.UseVisualStyleBackColor = true;
@@ -57,7 +60,7 @@
             // 
             // btn_Next
             // 
-            this.btn_Next.Location = new System.Drawing.Point(88, 3);
+            this.btn_Next.Location = new System.Drawing.Point(143, 3);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(37, 31);
             this.btn_Next.TabIndex = 2;
@@ -67,7 +70,7 @@
             // 
             // btn_Play
             // 
-            this.btn_Play.Location = new System.Drawing.Point(46, 3);
+            this.btn_Play.Location = new System.Drawing.Point(101, 3);
             this.btn_Play.Name = "btn_Play";
             this.btn_Play.Size = new System.Drawing.Size(36, 31);
             this.btn_Play.TabIndex = 3;
@@ -78,19 +81,20 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_Prev);
             this.panel1.Controls.Add(this.btn_Next);
             this.panel1.Controls.Add(this.btn_Play);
-            this.panel1.Location = new System.Drawing.Point(235, 6);
+            this.panel1.Location = new System.Drawing.Point(241, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(128, 37);
+            this.panel1.Size = new System.Drawing.Size(183, 37);
             this.panel1.TabIndex = 4;
             // 
             // tb_Volume
             // 
             this.tb_Volume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_Volume.AutoSize = false;
-            this.tb_Volume.Location = new System.Drawing.Point(369, 3);
+            this.tb_Volume.Location = new System.Drawing.Point(430, 3);
             this.tb_Volume.Maximum = 100;
             this.tb_Volume.Name = "tb_Volume";
             this.tb_Volume.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -109,8 +113,18 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(223, 74);
+            this.panel3.Size = new System.Drawing.Size(229, 74);
             this.panel3.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(157, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "label4";
             // 
             // label3
             // 
@@ -144,9 +158,9 @@
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(235, 46);
+            this.progressBar1.Location = new System.Drawing.Point(241, 46);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(128, 34);
+            this.progressBar1.Size = new System.Drawing.Size(183, 34);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 8;
             // 
@@ -158,35 +172,50 @@
             this.panel2.AutoScroll = true;
             this.panel2.Location = new System.Drawing.Point(6, 86);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(391, 394);
+            this.panel2.Size = new System.Drawing.Size(493, 394);
             this.panel2.TabIndex = 9;
             // 
-            // label4
+            // button1
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(151, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.button1.Location = new System.Drawing.Point(50, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(45, 31);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Pause";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.BackColor = System.Drawing.Color.Silver;
+            this.trackBar1.Location = new System.Drawing.Point(460, 3);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(24, 77);
+            this.trackBar1.TabIndex = 10;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll_1);
             // 
             // Player
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.tb_Volume);
             this.Controls.Add(this.panel1);
             this.Name = "Player";
-            this.Size = new System.Drawing.Size(397, 480);
+            this.Size = new System.Drawing.Size(499, 480);
             this.Load += new System.EventHandler(this.Player_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tb_Volume)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -204,5 +233,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

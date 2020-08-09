@@ -11,14 +11,21 @@ namespace CSharp_OnlineMusicPlayer
     {
         public static string GetPage(string link)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(link);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            try
+            {
+                HttpWebRequest request = WebRequest.CreateHttp(link);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            if (response.StatusCode == HttpStatusCode.OK)
-                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-                    return sr.ReadToEnd();
+                if (response.StatusCode == HttpStatusCode.OK)
+                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                        return sr.ReadToEnd();
 
-            return string.Empty;
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         public static List<MusicElement> GetMusicListFromWebPage(string webPage, string rgxPattern)
@@ -27,6 +34,7 @@ namespace CSharp_OnlineMusicPlayer
             Regex rgx = new Regex(pattern);
 
             List<Match> matches = rgx.Matches(GetPage(webPage)).OfType<Match>().Where(x => x.Groups.Count > 0).ToList();
+
             List<MusicElement> musicList = new List<MusicElement>();
             
             foreach (Match i in matches)

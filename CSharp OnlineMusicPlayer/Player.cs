@@ -82,21 +82,35 @@ namespace CSharp_OnlineMusicPlayer
             wmp = new WindowsMediaPlayer();
 
             tb_Volume.Value = volume;
+
             Timer tmr = new Timer()
             {
                 Interval = 1000
             };
+
             tmr.Tick += Tmr_Tick;
             tmr.Start();
+
+            wmp.StatusChange += Wmp_StatusChange;
         }
 
+        private void Wmp_StatusChange()
+        {
+            if (wmp.playState == WMPPlayState.wmppsMediaEnded)
+            {
+                btn_Next.PerformClick();
+                btn_Play.PerformClick();
+            }
+        }
+        int trackPercent = 0;
         private void Tmr_Tick(object sender, EventArgs e)
         {
             if (wmp.currentMedia != null && wmp.currentMedia.duration > 0)
             {
-                int percent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
+                trackPercent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
                 label4.Text = $"{ wmp.controls.currentPositionString } / { wmp.currentMedia.durationString }";
-                progressBar1.Value = percent;
+                progressBar1.Value = trackPercent;
+                trackBar1.Value = trackPercent;
             }
         }
 
@@ -108,6 +122,12 @@ namespace CSharp_OnlineMusicPlayer
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(wmp.controls.currentPositionString);
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            trackPercent = trackBar1.Value;
+            wmp.controls.currentPosition = wmp.currentMedia.duration / 100 * trackBar1.Value;
         }
     }
 }
