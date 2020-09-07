@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -28,18 +27,24 @@ namespace CSharp_OnlineMusicPlayer
             }
         }
 
+        public static List<Match> GetMatches(string rgxPattern, string page)
+        {
+            Regex rgx = new Regex(rgxPattern);
+
+            List<Match> matches = rgx.Matches(GetPage(page)).OfType<Match>().ToList();
+
+            return matches;
+        }
+
         public static List<MusicElement> GetMusicListFromWebPage(string webPage, string rgxPattern)
         {
-            string pattern = rgxPattern;
-            Regex rgx = new Regex(pattern);
-
-            List<Match> matches = rgx.Matches(GetPage(webPage)).OfType<Match>().Where(x => x.Groups.Count > 0).ToList();
-
+            List<Match> matches = GetMatches(rgxPattern, webPage);
             List<MusicElement> musicList = new List<MusicElement>();
-            
-            foreach (Match i in matches)
-                musicList.Add(new MusicElement(i.Groups[1].Value, "Test", DateTime.Now));
 
+            foreach (Match i in matches)
+            {
+                musicList.Add(new MusicElement(i.Groups[2].Value + " - " + i.Groups[1].Value, i.Groups[3].Value, i.Groups[4].Value));
+            }
             return musicList;
         }
     }

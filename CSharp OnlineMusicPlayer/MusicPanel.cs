@@ -30,7 +30,7 @@ namespace CSharp_OnlineMusicPlayer
                 label1.Text = value;
             }
         }
-        public DateTime dt = DateTime.Now;
+        public string dt = string.Empty;
 
         public MusicPanel()
         {

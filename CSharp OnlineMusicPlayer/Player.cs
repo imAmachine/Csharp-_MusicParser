@@ -52,7 +52,7 @@ namespace CSharp_OnlineMusicPlayer
 
             foreach (var i in URLS.Reverse<MusicElement>()) 
             {
-                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName };
+                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName, dt = i.duration };
                 
                 panel2.Controls.Add(panel);
 
@@ -62,10 +62,17 @@ namespace CSharp_OnlineMusicPlayer
             panel2.Controls.OfType<MusicPanel>().AsParallel().ForAll(x => 
             {
                 x.Click += Panel_Click;
-                x.Controls.OfType<Control>().AsParallel().ForAll(y => y.Click += Panel_Click);
+                x.DoubleClick += btn_Play_Click;
+                x.Controls.OfType<Control>().AsParallel().ForAll(y => { y.Click += Panel_Click; y.DoubleClick += btn_Play_Click; });
             });
             pb.Dispose();
         }
+
+        private void X_DoubleClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void SelectPanel(MusicPanel panel)
         {
             if (curPanel != null && curPanel != playingPanel)

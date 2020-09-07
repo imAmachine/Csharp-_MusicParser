@@ -14,9 +14,12 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Form1 : Form
     {
-        private string startPageUrl = @"https://muzofond.fm/";
-        private string rgxPattern = @"<ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
-
+        //private string startPageUrl = @"https://muzofond.fm/";
+        private string startPageUrl = @"https://ruq.hotmo.org/";
+        
+        //private string rgxPattern = @" < ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
+        private string rgxPattern = @"<div\sclass=""track__info"".*[\n|\s]*.*[\n|\s]*.*.*[\n|\s]*(.*).*[\n|\s]*.*[\n|\s]*<div class=""track__desc"">(.*)<\/div>[\n|\s]*.*.*[\n|\s]*.*.*[\n|\s]*.*[\n|\s]*<div class=""track__fulltime"">([\d|:]*).*[\n|\s]*.*[\n|\s]*.*[\n|\s]*<a.*href=""(.*\.mp3)"""; // hitmo.org
+        
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +40,8 @@ namespace CSharp_OnlineMusicPlayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SetMusicList($@"https://muzofond.fm/search/{tb_Search.Text.Trim()}");
+            string link = @"https://ruq.hotmo.org/" + (tb_Search.Text.Length > 0 ? "search?q=" + tb_Search.Text.Trim() : "");
+            SetMusicList(link);
         }
 
         private void player1_Load(object sender, EventArgs e)
@@ -45,9 +49,15 @@ namespace CSharp_OnlineMusicPlayer
             SetMusicList(startPageUrl);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            btn_Search.PerformClick();
+            tb_Search.Clear();
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+            ab.ShowDialog();
         }
     }
 }
