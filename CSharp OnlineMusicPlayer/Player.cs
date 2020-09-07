@@ -11,12 +11,14 @@ using System.IO;
 using System.Net;
 using WMPLib;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Channels;
 
 namespace CSharp_OnlineMusicPlayer
 {
     public partial class Player : UserControl
     {
         private MusicPanel curPanel = null;
+        private MusicPanel playingPanel = null;
         private List<MusicElement> URLS = new List<MusicElement>();
         private WindowsMediaPlayer wmp;
 
@@ -50,25 +52,36 @@ namespace CSharp_OnlineMusicPlayer
 
             foreach (var i in URLS.Reverse<MusicElement>()) 
             {
-                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName, Margin = new Padding(0, 20, 0, 0) };
+                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName };
                 
                 panel2.Controls.Add(panel);
 
                 await Task.Delay(1);
             }
 
-            panel2.Controls.OfType<MusicPanel>().AsParallel().ForAll(x => x.Click += Panel_Click);
+            panel2.Controls.OfType<MusicPanel>().AsParallel().ForAll(x => 
+            {
+                x.Click += Panel_Click;
+                x.Controls.OfType<Control>().AsParallel().ForAll(y => y.Click += Panel_Click);
+            });
             pb.Dispose();
         }
-
-        private void Panel_Click(object sender, EventArgs e)
+        private void SelectPanel(MusicPanel panel)
         {
-            if (curPanel != null)
+            if (curPanel != null && curPanel != playingPanel)
                 curPanel.BackColor = SystemColors.Control;
-            curPanel = (MusicPanel)sender;
-            curPanel.BackColor = Color.Green;
+
+            curPanel = panel;
+
+            if (curPanel != playingPanel)
+                curPanel.BackColor = Color.Green;
 
             index = panel2.Controls.IndexOf(curPanel);
+        }
+        private void Panel_Click(object sender, EventArgs e)
+        {
+            MusicPanel panel = sender.GetType() != typeof(MusicPanel) ? (MusicPanel)((Control)sender).Parent : (MusicPanel)sender;
+            SelectPanel(panel);
         }
 
         public Player()
@@ -78,41 +91,40 @@ namespace CSharp_OnlineMusicPlayer
 
         private void btn_Play_Click(object sender, EventArgs e)
         {
-            wmp.URL = curPanel.URL;
-            wmp.controls.play();
+            if (curPanel != null)
+            {
+                if (playingPanel != null)
+                    playingPanel.BackColor = SystemColors.Control;
+                playingPanel = curPanel;
+                playingPanel.BackColor = Color.Beige;
+                wmp.URL = curPanel.URL;
+                wmp.controls.play();
+            }
         }
 
         private void btn_Next_Click(object sender, EventArgs e)
         {
-            index = (index + ((Button)sender == btn_Next ? -1 : 1) + panel2.Controls.Count) % panel2.Controls.Count;
-            curPanel = (MusicPanel)panel2.Controls[index];
-            curPanel.Focus();
+            if (panel2.Controls.Count > 0)
+            {
+                index = (index + ((Button)sender == btn_Next ? -1 : 1) + panel2.Controls.Count) % panel2.Controls.Count;
+                SelectPanel((MusicPanel)panel2.Controls[index]);
+            }
         }
 
         private void Player_Load(object sender, EventArgs e)
         {
+            panel2.Padding = new Padding(0, 0, 20, 0);
+            
             wmp = new WindowsMediaPlayer();
 
             tb_Volume.Value = volume;
 
-            Timer tmr = new Timer()
-            {
-                Interval = 1000
-            };
+            Timer tmr = new Timer() { Interval = 1000 };
 
             tmr.Tick += Tmr_Tick;
             tmr.Start();
 
             wmp.StatusChange += Wmp_StatusChange;
-        }
-
-        private void Wmp_StatusChange()
-        {
-            if (wmp.playState == WMPPlayState.wmppsMediaEnded)
-            {
-                btn_Next.PerformClick();
-                btn_Play.PerformClick();
-            }
         }
 
         int trackPercent = 0;
@@ -126,21 +138,33 @@ namespace CSharp_OnlineMusicPlayer
             }
         }
 
+        private void Wmp_StatusChange()
+        {
+            if (wmp.playState == WMPPlayState.wmppsMediaEnded)
+            {
+                btn_Next.PerformClick();
+                btn_Play.PerformClick();
+            }
+        }
+
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             wmp.settings.volume = tb_Volume.Value;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(wmp.controls.currentPositionString);
-        }
-
         private void progressBar1_MouseClick(object sender, MouseEventArgs e)
         {
-            Point clickPoint = progressBar1.PointToClient(Cursor.Position);
-            trackPercent = (int)Math.Round(clickPoint.X / (double)progressBar1.Width * 100);
-            wmp.controls.currentPosition = wmp.currentMedia.duration / 100 * trackPercent;
+            if (wmp.URL != string.Empty)
+            {
+                Point clickPoint = progressBar1.PointToClient(Cursor.Position);
+                trackPercent = (int)Math.Round(clickPoint.X / (double)progressBar1.Width * 100);
+                wmp.controls.currentPosition = wmp.currentMedia.duration / 100 * trackPercent;
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            wmp.controls.pause();
         }
     }
 }

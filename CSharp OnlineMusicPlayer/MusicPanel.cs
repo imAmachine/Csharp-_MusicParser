@@ -45,13 +45,13 @@ namespace CSharp_OnlineMusicPlayer
 
         private void MusicPanel_MouseEnter(object sender, EventArgs e)
         {
-            if (BackColor != Color.Green)
+            if (BackColor != Color.Green && BackColor != Color.Beige)
                 BackColor = Color.Bisque;
         }
 
         private void MusicPanel_MouseLeave(object sender, EventArgs e)
         {
-            if (BackColor != Color.Green)
+            if (BackColor != Color.Green && BackColor != Color.Beige)
                 BackColor = SystemColors.Control;
         }
     }

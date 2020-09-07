@@ -44,5 +44,10 @@ namespace CSharp_OnlineMusicPlayer
         {
             SetMusicList(startPageUrl);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btn_Search.PerformClick();
+        }
     }
 }

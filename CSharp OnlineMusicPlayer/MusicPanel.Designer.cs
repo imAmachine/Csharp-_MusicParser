@@ -42,6 +42,8 @@
             this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            this.label1.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
             // label2
             // 
@@ -51,6 +53,8 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
+            this.label2.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
             // label4
             // 
@@ -60,6 +64,8 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "label3";
+            this.label4.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.label4.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
             // MusicPanel
             // 

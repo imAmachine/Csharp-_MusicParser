@@ -126,18 +126,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ajax-loader.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\103.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\103.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1031.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\5.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
