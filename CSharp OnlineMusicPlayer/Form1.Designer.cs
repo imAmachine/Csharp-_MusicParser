@@ -35,7 +35,7 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(248, 9);
+            this.btn_Search.Location = new System.Drawing.Point(421, 9);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 31);
             this.btn_Search.TabIndex = 0;
@@ -48,22 +48,22 @@
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_Search.Location = new System.Drawing.Point(12, 9);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(230, 31);
+            this.tb_Search.Size = new System.Drawing.Size(403, 31);
             this.tb_Search.TabIndex = 2;
             // 
             // player1
             // 
             this.player1.Location = new System.Drawing.Point(12, 46);
             this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(311, 392);
+            this.player1.Size = new System.Drawing.Size(484, 392);
             this.player1.TabIndex = 3;
-            this.player1.Load += new System.EventHandler(this.player1_Load);
             // 
             // Form1
             // 
+            this.AcceptButton = this.btn_Search;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 450);
+            this.ClientSize = new System.Drawing.Size(508, 450);
             this.Controls.Add(this.player1);
             this.Controls.Add(this.tb_Search);
             this.Controls.Add(this.btn_Search);

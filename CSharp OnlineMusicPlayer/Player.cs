@@ -16,14 +16,14 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Player : UserControl
     {
-        private string url = string.Empty;
-        private WindowsMediaPlayer wmp;
-        private int volume = 3;
-
-        private int index = 0;
-        private MusicPanel curPanel = null; 
-        
+        private MusicPanel curPanel = null;
         private List<MusicElement> URLS = new List<MusicElement>();
+        private WindowsMediaPlayer wmp;
+
+        private string url = string.Empty;
+        private int volume = 3;
+        private int index = 0;
+        
 
         public List<MusicElement> Music
         {
@@ -37,26 +37,38 @@ namespace CSharp_OnlineMusicPlayer
         private async void LoadMusicPanels(List<MusicElement> URLS)
         {
             panel2.Controls.Clear();
-            panel2.SuspendLayout();
+
+            PictureBox pb = new PictureBox()
+            {
+                Size = new Size(Parent.Width, Parent.Height),
+                Location = new Point(0, 0),
+                Padding = new Padding(Width / 2 - 32 - SystemInformation.VerticalScrollBarWidth, (Height - this.VerticalScroll.Value) / 4, 0, 0),
+                Image = Properties.Resources._5,
+                Anchor = (AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom)
+            };
+            panel2.Controls.Add(pb);
 
             foreach (var i in URLS.Reverse<MusicElement>()) 
             {
-                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName };
-                panel.Click += Panel_Click;
+                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName, Margin = new Padding(0, 20, 0, 0) };
                 
                 panel2.Controls.Add(panel);
 
                 await Task.Delay(1);
             }
 
-            panel2.ResumeLayout();
+            panel2.Controls.OfType<MusicPanel>().AsParallel().ForAll(x => x.Click += Panel_Click);
+            pb.Dispose();
         }
 
         private void Panel_Click(object sender, EventArgs e)
         {
+            if (curPanel != null)
+                curPanel.BackColor = SystemColors.Control;
             curPanel = (MusicPanel)sender;
+            curPanel.BackColor = Color.Green;
+
             index = panel2.Controls.IndexOf(curPanel);
-            curPanel.Focus();
         }
 
         public Player()
@@ -102,15 +114,15 @@ namespace CSharp_OnlineMusicPlayer
                 btn_Play.PerformClick();
             }
         }
+
         int trackPercent = 0;
         private void Tmr_Tick(object sender, EventArgs e)
         {
             if (wmp.currentMedia != null && wmp.currentMedia.duration > 0)
             {
                 trackPercent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
-                label4.Text = $"{ wmp.controls.currentPositionString } / { wmp.currentMedia.durationString }";
+                label4.Text = $"{ (wmp.controls.currentPositionString != string.Empty ? wmp.controls.currentPositionString : "00:00") } / { wmp.currentMedia.durationString }";
                 progressBar1.Value = trackPercent;
-                trackBar1.Value = trackPercent;
             }
         }
 
@@ -124,10 +136,11 @@ namespace CSharp_OnlineMusicPlayer
             MessageBox.Show(wmp.controls.currentPositionString);
         }
 
-        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        private void progressBar1_MouseClick(object sender, MouseEventArgs e)
         {
-            trackPercent = trackBar1.Value;
-            wmp.controls.currentPosition = wmp.currentMedia.duration / 100 * trackBar1.Value;
+            Point clickPoint = progressBar1.PointToClient(Cursor.Position);
+            trackPercent = (int)Math.Round(clickPoint.X / (double)progressBar1.Width * 100);
+            wmp.controls.currentPosition = wmp.currentMedia.duration / 100 * trackPercent;
         }
     }
 }

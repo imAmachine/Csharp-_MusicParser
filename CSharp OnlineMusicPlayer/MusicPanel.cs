@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CSharp_OnlineMusicPlayer
@@ -49,14 +43,16 @@ namespace CSharp_OnlineMusicPlayer
             Height = 65;
         }
 
-        private void MusicPanel_Enter(object sender, EventArgs e)
+        private void MusicPanel_MouseEnter(object sender, EventArgs e)
         {
-            BackColor = Color.Green;
+            if (BackColor != Color.Green)
+                BackColor = Color.Bisque;
         }
 
-        private void MusicPanel_Leave(object sender, EventArgs e)
+        private void MusicPanel_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = SystemColors.Control;
+            if (BackColor != Color.Green)
+                BackColor = SystemColors.Control;
         }
     }
 }
