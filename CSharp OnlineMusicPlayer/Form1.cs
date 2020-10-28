@@ -40,7 +40,7 @@ namespace CSharp_OnlineMusicPlayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string link = @"https://ruq.hotmo.org/" + (tb_Search.Text.Length > 0 ? "search?q=" + tb_Search.Text.Trim() : "");
+            string link = @"https://ruv.hotmo.org/" + (tb_Search.Text.Length > 0 ? "search?q=" + tb_Search.Text.Trim() : "");
             SetMusicList(link);
         }
 
@@ -52,12 +52,6 @@ namespace CSharp_OnlineMusicPlayer
         private void button1_Click_1(object sender, EventArgs e)
         {
             tb_Search.Clear();
-        }
-
-        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox ab = new AboutBox();
-            ab.ShowDialog();
         }
     }
 }
