@@ -16,6 +16,7 @@ namespace CSharp_OnlineMusicPlayer
     {
         //private string startPageUrl = @"https://muzofond.fm/";
         private string startPageUrl = @"https://ruq.hotmo.org/";
+        private Sites startPage = Sites.hotmo;
         
         //private string rgxPattern = @" < ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
         private string rgxPattern = @"<div\sclass=""track__info"".*[\n|\s]*.*[\n|\s]*.*.*[\n|\s]*(.*).*[\n|\s]*.*[\n|\s]*<div class=""track__desc"">(.*)<\/div>[\n|\s]*.*.*[\n|\s]*.*.*[\n|\s]*.*[\n|\s]*<div class=""track__fulltime"">([\d|:]*).*[\n|\s]*.*[\n|\s]*.*[\n|\s]*<a.*href=""(.*\.mp3)"""; // hitmo.org
@@ -38,20 +39,27 @@ namespace CSharp_OnlineMusicPlayer
             btn_Search.Enabled = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SearchBtn_Click(object sender, EventArgs e)
         {
-            string link = @"https://ruv.hotmo.org/" + (tb_Search.Text.Length > 0 ? "search?q=" + tb_Search.Text.Trim() : "");
+            string link = Properties.Settings.Default.SelectedWebPage + (tb_Search.Text.Length > 0 ? LinksBySite.SearchQueryPattern + tb_Search.Text.Trim() : "");
             SetMusicList(link);
         }
 
         private void player1_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.SelectedWebPage == null)
+
             SetMusicList(startPageUrl);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             tb_Search.Clear();
+        }
+
+        private void hitmomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,8 +31,12 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.player1 = new CSharp_OnlineMusicPlayer.Player();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменаСайтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hitmomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.player1 = new CSharp_OnlineMusicPlayer.Player();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Search
@@ -44,7 +48,7 @@
             this.btn_Search.TabIndex = 0;
             this.btn_Search.Text = "Search";
             this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Search.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // tb_Search
             // 
@@ -68,6 +72,43 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.опцииToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(508, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // опцииToolStripMenuItem
+            // 
+            this.опцииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сменаСайтаToolStripMenuItem});
+            this.опцииToolStripMenuItem.Name = "опцииToolStripMenuItem";
+            this.опцииToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.опцииToolStripMenuItem.Text = "Опции";
+            // 
+            // сменаСайтаToolStripMenuItem
+            // 
+            this.сменаСайтаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hitmomeToolStripMenuItem});
+            this.сменаСайтаToolStripMenuItem.Name = "сменаСайтаToolStripMenuItem";
+            this.сменаСайтаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сменаСайтаToolStripMenuItem.Text = "Смена сайта...";
+            // 
+            // hitmomeToolStripMenuItem
+            // 
+            this.hitmomeToolStripMenuItem.Checked = true;
+            this.hitmomeToolStripMenuItem.CheckOnClick = true;
+            this.hitmomeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hitmomeToolStripMenuItem.Name = "hitmomeToolStripMenuItem";
+            this.hitmomeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hitmomeToolStripMenuItem.Tag = "https://ruq.hotmo.org/";
+            this.hitmomeToolStripMenuItem.Text = "hotmo.org";
+            this.hitmomeToolStripMenuItem.Click += new System.EventHandler(this.hitmomeToolStripMenuItem_Click);
+            // 
             // player1
             // 
             this.player1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -77,14 +118,6 @@
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(484, 384);
             this.player1.TabIndex = 3;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(508, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // Form1
             // 
@@ -101,6 +134,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.player1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,6 +148,9 @@
         private Player player1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem опцииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменаСайтаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hitmomeToolStripMenuItem;
     }
 }
 
