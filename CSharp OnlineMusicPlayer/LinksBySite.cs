@@ -9,26 +9,13 @@ namespace CSharp_OnlineMusicPlayer
 {
     public static class LinksBySite
     {
-        public static string SearchQueryPattern = "search?q=";
-        //public static void GetTracksFrom(Sites website, string query)
-        //{
-        //    switch (website)
-        //    {
-        //        case Sites.hotmo:
-        //            string link = @"https://ruv.hotmo.org/" + (query != "" ? SearchQueryPattern + query : query);
-        //            SetMusicList(link);
-        //            break;
-        //    }
-        //}
-
         public static void SetWebSite(Sites website)
         {
             switch (website)
             {
                 case Sites.hotmo:
-                    Properties.Settings.Default.SelectedWebPage = @"https://ruv.hotmo.org/";
+                    Properties.Settings.Default.SelectedWebPage = 0;
                     Properties.Settings.Default.Save();
-                    SearchQueryPattern = "search?q=";
                     break;
             }
         }

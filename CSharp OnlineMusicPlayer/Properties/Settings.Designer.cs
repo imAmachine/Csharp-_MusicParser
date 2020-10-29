@@ -25,10 +25,10 @@ namespace CSharp_OnlineMusicPlayer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SelectedWebPage {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedWebPage {
             get {
-                return ((string)(this["SelectedWebPage"]));
+                return ((int)(this["SelectedWebPage"]));
             }
             set {
                 this["SelectedWebPage"] = value;

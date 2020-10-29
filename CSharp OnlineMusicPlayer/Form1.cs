@@ -41,8 +41,10 @@ namespace CSharp_OnlineMusicPlayer
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            string link = Properties.Settings.Default.SelectedWebPage + (tb_Search.Text.Length > 0 ? LinksBySite.SearchQueryPattern + tb_Search.Text.Trim() : "");
-            SetMusicList(link);
+            Sites s = 0;
+            MessageBox.Show(s.ToString());
+            //string link = Properties.Settings.Default.SelectedWebPage + (tb_Search.Text.Length > 0 ? LinksBySite.SearchQueryPattern + tb_Search.Text.Trim() : "");
+            //SetMusicList(link);
         }
 
         private void player1_Load(object sender, EventArgs e)
