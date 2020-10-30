@@ -76,7 +76,7 @@ namespace CSharp_OnlineMusicPlayer
         private void SelectPanel(MusicPanel panel)
         {
             if (curPanel != null && curPanel != playingPanel)
-                curPanel.BackColor = SystemColors.Control;
+                curPanel.BackColor = SystemColors.ControlLightLight;
 
             curPanel = panel;
 
@@ -100,6 +100,8 @@ namespace CSharp_OnlineMusicPlayer
         {
             if (curPanel != null)
             {
+                if (wmp.playState == WMPPlayState.wmppsPaused)
+                    button1.Text = "Pause";
                 if (playingPanel != null)
                     playingPanel.BackColor = SystemColors.Control;
                 playingPanel = curPanel;
@@ -184,7 +186,6 @@ namespace CSharp_OnlineMusicPlayer
                 button1.Text = "Continue";
                 wmp.controls.pause();
             }
-
         }
     }
 }

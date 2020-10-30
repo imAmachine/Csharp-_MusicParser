@@ -47,7 +47,7 @@
             // 
             // btn_Prev
             // 
-            this.btn_Prev.Location = new System.Drawing.Point(3, 1);
+            this.btn_Prev.Location = new System.Drawing.Point(0, 0);
             this.btn_Prev.Name = "btn_Prev";
             this.btn_Prev.Size = new System.Drawing.Size(41, 31);
             this.btn_Prev.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btn_Next
             // 
-            this.btn_Next.Location = new System.Drawing.Point(183, 1);
+            this.btn_Next.Location = new System.Drawing.Point(188, 1);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(37, 31);
             this.btn_Next.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             // btn_Play
             // 
-            this.btn_Play.Location = new System.Drawing.Point(101, 1);
+            this.btn_Play.Location = new System.Drawing.Point(104, 0);
             this.btn_Play.Name = "btn_Play";
             this.btn_Play.Size = new System.Drawing.Size(78, 31);
             this.btn_Play.TabIndex = 3;
@@ -78,7 +78,6 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_Prev);
             this.panel1.Controls.Add(this.btn_Next);
@@ -90,9 +89,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(50, 1);
+            this.button1.Location = new System.Drawing.Point(47, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 31);
+            this.button1.Size = new System.Drawing.Size(51, 31);
             this.button1.TabIndex = 4;
             this.button1.Text = "Pause";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,7 +114,7 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.SystemColors.Info;
+            this.panel3.BackColor = System.Drawing.Color.Lavender;
             this.panel3.Controls.Add(this.lbl_Time);
             this.panel3.Controls.Add(this.lbl_Compositor);
             this.panel3.Controls.Add(this.lbl_Title);
@@ -126,10 +125,9 @@
             // 
             // lbl_Time
             // 
-            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Time.AutoSize = true;
             this.lbl_Time.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Time.Location = new System.Drawing.Point(99, 43);
+            this.lbl_Time.Location = new System.Drawing.Point(3, 48);
             this.lbl_Time.Name = "lbl_Time";
             this.lbl_Time.Size = new System.Drawing.Size(130, 26);
             this.lbl_Time.TabIndex = 3;
@@ -139,7 +137,7 @@
             // 
             this.lbl_Compositor.AutoSize = true;
             this.lbl_Compositor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Compositor.Location = new System.Drawing.Point(-2, 25);
+            this.lbl_Compositor.Location = new System.Drawing.Point(4, 26);
             this.lbl_Compositor.Name = "lbl_Compositor";
             this.lbl_Compositor.Size = new System.Drawing.Size(55, 20);
             this.lbl_Compositor.TabIndex = 1;
@@ -149,7 +147,7 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Title.Location = new System.Drawing.Point(-3, 0);
+            this.lbl_Title.Location = new System.Drawing.Point(3, 0);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(140, 25);
             this.lbl_Title.TabIndex = 0;

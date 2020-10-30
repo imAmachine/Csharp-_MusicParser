@@ -37,7 +37,7 @@
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Title.Location = new System.Drawing.Point(3, 0);
+            this.lbl_Title.Location = new System.Drawing.Point(2, 0);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(70, 25);
             this.lbl_Title.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             this.lbl_Compositor.AutoSize = true;
             this.lbl_Compositor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Compositor.Location = new System.Drawing.Point(5, 25);
+            this.lbl_Compositor.Location = new System.Drawing.Point(4, 25);
             this.lbl_Compositor.Name = "lbl_Compositor";
             this.lbl_Compositor.Size = new System.Drawing.Size(51, 20);
             this.lbl_Compositor.TabIndex = 1;
