@@ -52,7 +52,7 @@ namespace CSharp_OnlineMusicPlayer
 
             foreach (var i in URLS.Reverse<MusicElement>()) 
             {
-                MusicPanel panel = new MusicPanel() { URL = i.URL, trackName = i.trackName, dt = i.duration };
+                MusicPanel panel = new MusicPanel() { URL = i.URL, TrackName = i.trackName, Author = i.author, Duration = i.duration };
                 
                 panel2.Controls.Add(panel);
 
@@ -104,6 +104,8 @@ namespace CSharp_OnlineMusicPlayer
                     playingPanel.BackColor = SystemColors.Control;
                 playingPanel = curPanel;
                 playingPanel.BackColor = Color.Beige;
+                lbl_Title.Text = curPanel.TrackName;
+                lbl_Compositor.Text = curPanel.Author;
                 wmp.URL = curPanel.URL;
                 wmp.controls.play();
             }
@@ -150,7 +152,7 @@ namespace CSharp_OnlineMusicPlayer
             if (wmp.currentMedia != null && wmp.currentMedia.duration > 0)
             {
                 trackPercent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
-                label4.Text = $"{ (wmp.controls.currentPositionString != string.Empty ? wmp.controls.currentPositionString : "00:00") } / { wmp.currentMedia.durationString }";
+                lbl_Time.Text = $"{ (wmp.controls.currentPositionString != string.Empty ? wmp.controls.currentPositionString : "00:00") } / { wmp.currentMedia.durationString }";
                 progressBar1.Value = trackPercent;
             }
         }

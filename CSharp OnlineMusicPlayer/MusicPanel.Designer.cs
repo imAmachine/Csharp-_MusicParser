@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.lbl_Compositor = new System.Windows.Forms.Label();
+            this.lbl_Time = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lbl_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            this.label1.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
-            this.label1.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Title.Location = new System.Drawing.Point(3, 0);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(70, 25);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "label1";
+            this.lbl_Title.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.lbl_Title.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
-            // label2
+            // lbl_Compositor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            this.label2.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
-            this.label2.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
+            this.lbl_Compositor.AutoSize = true;
+            this.lbl_Compositor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Compositor.Location = new System.Drawing.Point(5, 25);
+            this.lbl_Compositor.Name = "lbl_Compositor";
+            this.lbl_Compositor.Size = new System.Drawing.Size(51, 20);
+            this.lbl_Compositor.TabIndex = 1;
+            this.lbl_Compositor.Text = "label2";
+            this.lbl_Compositor.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.lbl_Compositor.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
-            // label4
+            // lbl_Time
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "label3";
-            this.label4.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
-            this.label4.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Location = new System.Drawing.Point(6, 45);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(35, 13);
+            this.lbl_Time.TabIndex = 2;
+            this.lbl_Time.Text = "label3";
+            this.lbl_Time.MouseEnter += new System.EventHandler(this.MusicPanel_MouseEnter);
+            this.lbl_Time.MouseLeave += new System.EventHandler(this.MusicPanel_MouseLeave);
             // 
             // MusicPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_Time);
+            this.Controls.Add(this.lbl_Compositor);
+            this.Controls.Add(this.lbl_Title);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "MusicPanel";
             this.Size = new System.Drawing.Size(429, 83);
@@ -87,8 +88,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_Title;
+        private System.Windows.Forms.Label lbl_Compositor;
+        private System.Windows.Forms.Label lbl_Time;
     }
 }

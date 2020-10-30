@@ -35,9 +35,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tb_Volume = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Time = new System.Windows.Forms.Label();
+            this.lbl_Compositor = new System.Windows.Forms.Label();
+            this.lbl_Title = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -115,44 +115,45 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.BackColor = System.Drawing.SystemColors.Info;
+            this.panel3.Controls.Add(this.lbl_Time);
+            this.panel3.Controls.Add(this.lbl_Compositor);
+            this.panel3.Controls.Add(this.lbl_Title);
             this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(229, 74);
             this.panel3.TabIndex = 7;
             // 
-            // label4
+            // lbl_Time
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(99, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 26);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "00:00 / 00:00";
+            this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Time.Location = new System.Drawing.Point(99, 43);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(130, 26);
+            this.lbl_Time.TabIndex = 3;
+            this.lbl_Time.Text = "00:00 / 00:00";
             // 
-            // label2
+            // lbl_Compositor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(-2, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.lbl_Compositor.AutoSize = true;
+            this.lbl_Compositor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Compositor.Location = new System.Drawing.Point(-2, 25);
+            this.lbl_Compositor.Name = "lbl_Compositor";
+            this.lbl_Compositor.Size = new System.Drawing.Size(55, 20);
+            this.lbl_Compositor.TabIndex = 1;
+            this.lbl_Compositor.Text = "author";
             // 
-            // label1
+            // lbl_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(-3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Title.Location = new System.Drawing.Point(-3, 0);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(140, 25);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "Change track";
             // 
             // progressBar1
             // 
@@ -204,11 +205,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TrackBar tb_Volume;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Compositor;
+        private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_Time;
         private System.Windows.Forms.Button button1;
     }
 }

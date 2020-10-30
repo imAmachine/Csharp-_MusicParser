@@ -16,10 +16,13 @@ namespace CSharp_OnlineMusicPlayer
             set
             {
                 url = value;
-                label2.Text = value;
+                lbl_Compositor.Text = value;
             }
         }
-        public string trackName
+        private string trackName = string.Empty;
+        private string author = string.Empty;
+        private string dt = string.Empty;
+        public string TrackName
         {
             get
             {
@@ -27,10 +30,36 @@ namespace CSharp_OnlineMusicPlayer
             }
             set
             {
-                label1.Text = value;
+                trackName = value;
+                lbl_Title.Text = value;
             }
         }
-        public string dt = string.Empty;
+
+        public string Author
+        {
+            get
+            {
+                return author;
+            }
+            set
+            {
+                author = value;
+                lbl_Compositor.Text = value;
+            }
+        }
+
+        public string Duration
+        {
+            get
+            {
+                return dt;
+            }
+            set
+            {
+                dt = value;
+                lbl_Time.Text = value;
+            }
+        }
 
         public MusicPanel()
         {

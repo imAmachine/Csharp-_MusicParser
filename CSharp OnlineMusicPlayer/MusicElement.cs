@@ -10,13 +10,15 @@ namespace CSharp_OnlineMusicPlayer
     {
         public string URL = string.Empty;
         public string trackName = string.Empty;
+        public string author = string.Empty;
         public string duration = string.Empty;
 
         public MusicElement() { }
-        public MusicElement(string trackName, string duration, string url)
+        public MusicElement(string trackName, string author, string duration, string url)
         {
             URL = url;
             this.trackName = trackName;
+            this.author = author;
             this.duration = duration;
         }
     }

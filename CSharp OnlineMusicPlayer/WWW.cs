@@ -43,7 +43,7 @@ namespace CSharp_OnlineMusicPlayer
 
             foreach (Match i in matches)
             {
-                musicList.Add(new MusicElement(i.Groups[2].Value + " - " + i.Groups[1].Value, i.Groups[3].Value, i.Groups[4].Value));
+                musicList.Add(new MusicElement(i.Groups[1].Value, i.Groups[2].Value, i.Groups[3].Value, i.Groups[4].Value));
             }
             return musicList;
         }
