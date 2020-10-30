@@ -8,12 +8,13 @@ namespace CSharp_OnlineMusicPlayer
 {
     public static class Global
     {
-        public static Sites curWebSite;
-        public static string[] sites = new string[] { @"https://ruq.hotmo.org/" };
-
-        public static Dictionary<Sites, string> QueryPatterns = new Dictionary<Sites, string>()
+        public static Dictionary<Sites, string[]> QueryPatterns = new Dictionary<Sites, string[]>()
         {
-            { Sites.hotmo, "search?q=" }
+            { Sites.hotmo, new string[] {   "search?q=", 
+                                            @"<div\sclass=""track__info"".*[\n|\s]*.*[\n|\s]*.*.*[\n|\s]*(.*).*[\n|\s]*.*[\n|\s]*<div class=""track__desc"">(.*)<\/div>[\n|\s]*.*.*[\n|\s]*.*.*[\n|\s]*.*[\n|\s]*<div class=""track__fulltime"">([\d|:]*).*[\n|\s]*.*[\n|\s]*.*[\n|\s]*<a.*href=""(.*\.mp3)""",
+                                            @"https://ruv.hotmo.org/"
+                                        } 
+            }
         };
     }
 }

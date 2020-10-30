@@ -14,25 +14,22 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Form1 : Form
     {
-        //private string startPageUrl = @"https://muzofond.fm/";
-        private string startPageUrl = @"https://ruq.hotmo.org/";
-        private Sites startPage = Sites.hotmo;
-        
-        //private string rgxPattern = @" < ul.*data-type=""tracks"".*|\s*<li class=""item active played"".*|\s*<li class=""play"".*data-url=""(.*)""";
-        private string rgxPattern = @"<div\sclass=""track__info"".*[\n|\s]*.*[\n|\s]*.*.*[\n|\s]*(.*).*[\n|\s]*.*[\n|\s]*<div class=""track__desc"">(.*)<\/div>[\n|\s]*.*.*[\n|\s]*.*.*[\n|\s]*.*[\n|\s]*<div class=""track__fulltime"">([\d|:]*).*[\n|\s]*.*[\n|\s]*.*[\n|\s]*<a.*href=""(.*\.mp3)"""; // hitmo.org
-        
+        private Sites webPage = (Sites)Properties.Settings.Default.SelectedWebPage;
+        private string[] pageData;
         public Form1()
         {
             InitializeComponent();
         }
-        private async void SetMusicList(string pageURL)
+        private async void SetMusicList()
         {
+            string link = pageData[2] + (tb_Search.Text.Length > 0 ? pageData[0] + tb_Search.Text.Trim() : "");
+
             btn_Search.Enabled = false;
             List<MusicElement> musicList = new List<MusicElement>();
 
             await Task.Run(() =>
             {
-                musicList = WWW.GetMusicListFromWebPage(pageURL, rgxPattern);
+                musicList = WWW.GetMusicListFromWebPage(link, pageData[1]);
             });
 
             player1.Music = musicList;
@@ -41,17 +38,18 @@ namespace CSharp_OnlineMusicPlayer
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            Sites s = 0;
-            MessageBox.Show(s.ToString());
-            //string link = Properties.Settings.Default.SelectedWebPage + (tb_Search.Text.Length > 0 ? LinksBySite.SearchQueryPattern + tb_Search.Text.Trim() : "");
-            //SetMusicList(link);
+            SetMusicList();
         }
 
         private void player1_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.SelectedWebPage == null)
-
-            SetMusicList(startPageUrl);
+            if (Properties.Settings.Default.SelectedWebPage < 0)
+            {
+                Properties.Settings.Default.SelectedWebPage = 0;
+                Properties.Settings.Default.Save();
+            }
+            pageData = Global.QueryPatterns[webPage];
+            SetMusicList();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -61,7 +59,8 @@ namespace CSharp_OnlineMusicPlayer
 
         private void hitmomeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LinksBySite.SetWebSite(Sites.hotmo);
+            pageData = Global.QueryPatterns[(Sites)Properties.Settings.Default.SelectedWebPage];
         }
     }
 }

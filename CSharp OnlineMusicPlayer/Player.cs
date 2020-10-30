@@ -131,7 +131,17 @@ namespace CSharp_OnlineMusicPlayer
             tmr.Tick += Tmr_Tick;
             tmr.Start();
 
-            wmp.StatusChange += Wmp_StatusChange;
+            wmp.PlayStateChange += Wmp_PlayStateChange;
+        }
+
+        private async void Wmp_PlayStateChange(int NewState)
+        {
+            if (wmp.playState == WMPPlayState.wmppsMediaEnded)
+            {
+                btn_Next.PerformClick();
+                await Task.Delay(50);
+                btn_Play.PerformClick();
+            }
         }
 
         int trackPercent = 0;
@@ -142,15 +152,6 @@ namespace CSharp_OnlineMusicPlayer
                 trackPercent = (int)(wmp.controls.currentPosition / wmp.currentMedia.duration * 100);
                 label4.Text = $"{ (wmp.controls.currentPositionString != string.Empty ? wmp.controls.currentPositionString : "00:00") } / { wmp.currentMedia.durationString }";
                 progressBar1.Value = trackPercent;
-            }
-        }
-
-        private void Wmp_StatusChange()
-        {
-            if (wmp.playState == WMPPlayState.wmppsMediaEnded)
-            {
-                btn_Next.PerformClick();
-                btn_Play.PerformClick();
             }
         }
 
@@ -171,7 +172,17 @@ namespace CSharp_OnlineMusicPlayer
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            wmp.controls.pause();
+            if (wmp.playState == WMPPlayState.wmppsPaused)
+            {
+                button1.Text = "Pause";
+                wmp.controls.play();
+            }
+            else if (wmp.playState == WMPPlayState.wmppsPlaying)
+            {
+                button1.Text = "Continue";
+                wmp.controls.pause();
+            }
+
         }
     }
 }
