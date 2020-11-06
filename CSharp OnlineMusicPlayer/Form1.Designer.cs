@@ -32,6 +32,7 @@
             this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменаСайтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hitmomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.muzofondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.tb_Search = new System.Windows.Forms.TextBox();
@@ -62,13 +63,15 @@
             this.опцииToolStripMenuItem.Name = "опцииToolStripMenuItem";
             this.опцииToolStripMenuItem.Size = new System.Drawing.Size(71, 25);
             this.опцииToolStripMenuItem.Text = "Опции";
+            this.опцииToolStripMenuItem.Click += new System.EventHandler(this.опцииToolStripMenuItem_Click);
             // 
             // сменаСайтаToolStripMenuItem
             // 
             this.сменаСайтаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hitmomeToolStripMenuItem});
+            this.hitmomeToolStripMenuItem,
+            this.muzofondToolStripMenuItem});
             this.сменаСайтаToolStripMenuItem.Name = "сменаСайтаToolStripMenuItem";
-            this.сменаСайтаToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.сменаСайтаToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.сменаСайтаToolStripMenuItem.Text = "Смена сайта...";
             // 
             // hitmomeToolStripMenuItem
@@ -82,8 +85,17 @@
             this.hitmomeToolStripMenuItem.Text = "hotmo.org";
             this.hitmomeToolStripMenuItem.Click += new System.EventHandler(this.hitmomeToolStripMenuItem_Click);
             // 
+            // muzofondToolStripMenuItem
+            // 
+            this.muzofondToolStripMenuItem.Name = "muzofondToolStripMenuItem";
+            this.muzofondToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.muzofondToolStripMenuItem.Text = "muzofond";
+            this.muzofondToolStripMenuItem.Click += new System.EventHandler(this.muzofondToolStripMenuItem_Click);
+            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.tb_Search);
@@ -171,6 +183,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.ToolStripMenuItem muzofondToolStripMenuItem;
     }
 }
 

@@ -143,7 +143,7 @@ namespace CSharp_OnlineMusicPlayer
             if (wmp.playState == WMPPlayState.wmppsMediaEnded)
             {
                 btn_Next.PerformClick();
-                await Task.Delay(50);
+                await Task.Delay(5);
                 btn_Play.PerformClick();
             }
         }

@@ -17,6 +17,10 @@ namespace CSharp_OnlineMusicPlayer
                     Properties.Settings.Default.SelectedWebPage = 0;
                     Properties.Settings.Default.Save();
                     break;
+                case Sites.sefon:
+                    Properties.Settings.Default.SelectedWebPage = 1;
+                    Properties.Settings.Default.Save();
+                    break;
             }
         }
     }

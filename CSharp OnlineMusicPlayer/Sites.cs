@@ -9,5 +9,6 @@ namespace CSharp_OnlineMusicPlayer
     public enum Sites
     {
         hotmo = 0,
+        sefon = 1,
     }
 }

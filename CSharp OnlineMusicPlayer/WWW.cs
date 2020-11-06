@@ -12,6 +12,7 @@ namespace CSharp_OnlineMusicPlayer
         {
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 HttpWebRequest request = WebRequest.CreateHttp(link);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -21,8 +22,9 @@ namespace CSharp_OnlineMusicPlayer
 
                 return string.Empty;
             }
-            catch
+            catch(WebException e)
             {
+                System.Windows.Forms.MessageBox.Show(e.Message);
                 return string.Empty;
             }
         }
@@ -43,7 +45,15 @@ namespace CSharp_OnlineMusicPlayer
 
             foreach (Match i in matches)
             {
-                musicList.Add(new MusicElement(i.Groups[1].Value, i.Groups[2].Value, i.Groups[3].Value, i.Groups[4].Value));
+                switch (Global.webPage)
+                {
+                    case Sites.hotmo:
+                        musicList.Add(new MusicElement(i.Groups[1].Value, i.Groups[2].Value, i.Groups[3].Value, i.Groups[4].Value));
+                        break;
+                    case Sites.sefon:
+                        musicList.Add(new MusicElement(i.Groups[3].Value, i.Groups[2].Value, "", i.Groups[1].Value));
+                        break;
+                }
             }
             return musicList;
         }

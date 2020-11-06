@@ -14,7 +14,6 @@ namespace CSharp_OnlineMusicPlayer
 {
     public partial class Form1 : Form
     {
-        private Sites webPage = (Sites)Properties.Settings.Default.SelectedWebPage;
         private string[] pageData;
         public Form1()
         {
@@ -48,7 +47,7 @@ namespace CSharp_OnlineMusicPlayer
                 Properties.Settings.Default.SelectedWebPage = 0;
                 Properties.Settings.Default.Save();
             }
-            pageData = Global.QueryPatterns[webPage];
+            pageData = Global.QueryPatterns[Global.webPage];
             SetMusicList();
         }
 
@@ -59,8 +58,21 @@ namespace CSharp_OnlineMusicPlayer
 
         private void hitmomeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Global.webPage = Sites.hotmo;
             LinksBySite.SetWebSite(Sites.hotmo);
             pageData = Global.QueryPatterns[(Sites)Properties.Settings.Default.SelectedWebPage];
+        }
+
+        private void muzofondToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.webPage = Sites.sefon;
+            LinksBySite.SetWebSite(Sites.sefon);
+            pageData = Global.QueryPatterns[(Sites)Properties.Settings.Default.SelectedWebPage];
+        }
+
+        private void опцииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        //    ((ToolStripMenuItem)sender).ForeColor = ((ToolStripMenuItem)sender).ForeColor == Color.White ? Color.Black : Color.White;
         }
     }
 }
